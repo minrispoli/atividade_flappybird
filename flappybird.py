@@ -183,7 +183,7 @@ def main():
                 if evento.type == pygame.QUIT:
                         rodando = False
                         pygame.quit()
-                        quit()
+                        sys.exit()
                 if evento.type == pygame.KEYDOWN:
                     if evento.key == pygame.K_SPACE:
                          for passaro in passaros:
@@ -216,6 +216,8 @@ def main():
             for i, passaro in enumerate(passaros):
                 if (passaro.y + passaro.imagem.get_height()) > chao.y or passaro.y < 0:
                     passaros.pop(i)
+                if len(passaros) == 0:
+                    rodando = False
 
             desenhar_tela(tela, passaros, canos, chao, pontos)
 
